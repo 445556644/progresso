@@ -27,8 +27,6 @@ public class Loja {
 	private String cidade;
 	private String foto;
 	private String redesSociais;
-	private boolean estacionamento;
-	private boolean delivery;
 	private String formasPagamento;
 	private String telefone;
 	@ManyToOne

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.senai.sp.cfp8.guidecar.model.Loja;
 import br.senai.sp.cfp8.guidecar.repository.LojaRepository;
@@ -30,9 +32,11 @@ public class LojaController {
 	
 	
 	@RequestMapping("salvarLoja")
-	public String salvarLoja(Loja loja) {
+	// referenciando o name do input(fotos) a variavel fileFotos
+	public String salvarLoja(Loja loja, @RequestParam("fotos") MultipartFile[] filefotos) {
 		
-		lojaRepository.save(loja);
+		System.out.println(filefotos.length);
+		//lojaRepository.save(loja);
 		
 		return "redirect:formLoja";
 		
