@@ -28,8 +28,15 @@ public class Loja {
 	private String foto;
 	private String redesSociais;
 	private String formasPagamento;
+	private String bairro;
 	private String telefone;
+	private String site;
 	@ManyToOne
 	private TipoLoja tipoLoja;
+	
+	public String[] verFotos() {
+
+		return this.foto.split(";");
+	}
 	
 }

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.senai.sp.cfp8.guidecar.anotation.Privado;
 import br.senai.sp.cfp8.guidecar.model.TipoLoja;
 import br.senai.sp.cfp8.guidecar.repository.TipoLojaRepository;
 
@@ -17,10 +19,12 @@ import br.senai.sp.cfp8.guidecar.repository.TipoLojaRepository;
 public class TipoLojaController {
 
 	// importando o repository para termos acesso aos metodos...
+	
 	@Autowired
 	private TipoLojaRepository tipoLojaRepository;
 
 	// metodo que faz o redirecionamento ao formulario
+	@Privado
 	@RequestMapping("formTipos")
 	public String formCar() {
 
@@ -29,6 +33,7 @@ public class TipoLojaController {
 
 	// metodo que salva
 	@RequestMapping("salvarTipo")
+	@Privado
 	public String salvarTipo(TipoLoja loja) {
 
 		tipoLojaRepository.save(loja);
@@ -38,6 +43,7 @@ public class TipoLojaController {
 
 	// metodo que faz a listagem
 	@RequestMapping("listarTiposLojas/{pagina}")
+	@Privado
 	public String listaTipos(Model model, @PathVariable("pagina") int page) {
 
 		model.addAttribute("tipoLoja", tipoLojaRepository.findAll());
@@ -82,6 +88,7 @@ public class TipoLojaController {
 
 	// metodo que atualiza
 	@RequestMapping("alterarTipo")
+	@Privado
 	public String atualizarTipo(Long id, Model model) {
 
 		model.addAttribute("loja", tipoLojaRepository.findById(id).get());
@@ -91,6 +98,7 @@ public class TipoLojaController {
 
 	// metodo que deleta
 	@RequestMapping("excluirTipo")
+	@Privado
 	public String excluirTipo(Long id) {
 
 		tipoLojaRepository.deleteById(id);
@@ -100,6 +108,7 @@ public class TipoLojaController {
 
 	// metodo que faz a busca pela palvra chave cadastrada
 	@RequestMapping("buscar")
+	@Privado
 	public String buscarPorpalavraChave(Model model, String busca) {
 
 		model.addAttribute("tipoLoja", tipoLojaRepository.buscarPalavraChave(busca));

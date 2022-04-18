@@ -66,94 +66,159 @@
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				<form action="salvarLoja" method="post" accept-charset="utf-8"
 					enctype="multipart/form-data" class="login100-form validate-form">
+					<input type="hidden" name="id" th:value="${loja?.id}">
 					<span class="login100-form-title p-b-59"> <i
-						class="large material-icons">store_mall_directory</i> Cadastre Sua
-						Loja
-					</span> <label>Insira O Tipo de Loja</label> <select name="tipos.id">
-
-
+						class="small material-icons">account_balance</i> Story Point
+					</span> <label>Insira O Tipo de Loja</label> <select name="tipoLoja.id">
 						<option th:each="t: ${tipos}" th:text="${t.nome}"
-							th:value="${t.id}" th:selected="${t.id == loja?.tipo?.id}"></option>
+							th:value="${t.id}" th:selected="${t.id == loja?.tipoLoja?.id}">
+
+
+						</option>
 
 					</select>
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Nome da Loja">
-						<span class="label-input100">Nome</span> <input class="input100"
-							type="text" name="nome" placeholder="Ex: Loja Maria"> <span
-							class="focus-input100"></span>
+						<span class="label-input100"><i
+							class="small material-icons">store_mall_directory</i></span> <input
+							th:value="${loja?.nome}" class="input100" type="text" name="nome"
+							placeholder="Nome Da Loja"> <span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input">
-						<span class="label-input100">Descrição</span> <input
-							class="input100" type="text" name="descricao"
-							placeholder="Descreva Sua Loja"> <span
+						<span class="label-input100"><i
+							class=" small material-icons">error</i></span> <input
+							th:value="${loja?.descricao}" class="input100" type="text"
+							name="descricao" placeholder="Descreva Sua Loja"> <span
 							class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Insira O Cep">
-						<span class="label-input100">Telefone</span> <input
-							class="input100" type="text" name="telefone"
-							placeholder="Ex:1141482010"> <span class="focus-input100"></span>
+						<span class="label-input100"><i
+							class=" small material-icons">call</i></span> <input
+							th:value="${loja?.telefone}" class="input100" type="text"
+							name="telefone" placeholder="Telefone"> <span
+							class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input"
 						data-validate="Insira O Cep">
-						<span class="label-input100">Cep</span> <input class="input100"
-							type="text" id="cep" name="cep" placeholder="Ex:06722200"><span
+						<span class="label-input100"><i
+							class=" small material-icons">location_on</i> </span> <input
+							class="input100" th:value="${loja?.cep}" type="text" id="cep"
+							name="cep" placeholder="Cep"><span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate>
+						<span class="label-input100"><i
+							class=" small material-icons">map</i></span> <input class="input100"
+							th:value="${loja?.endereco}" type="text" name="endereco"
+							placeholder="Endereco" readonly id="logradouro"> <span
 							class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate>
-						<span class="label-input100">Endereço</span> <input class="input100"
-							type="text" name="endereco" placeholder="Endereco" readonly
-							id="logradouro"> <span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate>
-						<span class="label-input100">Cidade</span> <input class="input100"
-							type="text" placeholder="Cidade" name="cidade" readonly
-							id="localidade"> <span class="focus-input100"></span>
-					</div>
-
-
-					<div class="wrap-input100 validate-input">
-						<span class="label-input100">Bairro</span> <input class="input100"
-							type="text" placeholder="Bairro" name="bairro" readonly
-							id="bairro"> <span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input">
-						<span class="label-input100">Estado</span> <input class="input100"
-							type="text" name="estado" placeholder="Estado" readonly id="uf">
+						<span class="label-input100"><i
+							class=" small material-icons">location_city</i></span> <input
+							class="input100" th:value="${loja?.cidade}" type="text"
+							placeholder="Cidade" name="cidade" readonly id="localidade">
 						<span class="focus-input100"></span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input">
+						<span class="label-input100"><i
+							class=" small material-icons">local_movies</i></span> <input
+							class="input100" th:value="${loja?.bairro}" type="text"
+							placeholder="Bairro" name="bairro" readonly id="bairro">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input">
+						<span class="label-input100"><i
+							class=" small material-icons">local_library</i></span> <input
+							class="input100" th:value="${loja?.estado}" type="text"
+							name="estado" placeholder="Estado" readonly id="uf"> <span
+							class="focus-input100"></span>
 					</div>
 
 
 					<div class="wrap-input100 validate-input"
 						data-validate=" Insira O Telefone">
-						<span class="label-input100">Número</span> <input placeholder="Número"
-							class="input100" type="text" name="numero"> <span
+						<span class="label-input100"><i
+							class=" tiny material-icons">N°</i></span> <input placeholder="Número"
+							th:value="${loja?.numero}" class="input100" type="text"
+							name="numero"> <span class="focus-input100"></span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input"
+						data-validate=" Insira O Telefone">
+						<span class="label-input100"><i
+							class=" small material-icons">nature_people</i></span> <input
+							placeholder="Complemento" th:value="${loja?.complemento}"
+							class="input100" type="text" name="complemento"> <span
+							class="focus-input100"></span>
+					</div>
+
+
+						<input type="hidden" name="foto" th:value="${loja?.foto}">
+
+					<div class="wrap-input100 validate-input" data-validate=" !!!">
+						<span class="label-input100"><i
+							class=" small material-icons">person</i></span> <input
+							th:value="${loja?.redesSociais}" class="input100" type="text"
+							placeholder="@" name="redesSociais"> <span
+							class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate=" !!!">
+						<span class="label-input100"><i
+							class=" small material-icons">cloud</i></span> <input
+							th:value="${loja?.site}" class="input100" type="text"
+							placeholder="Ex: storypoint.com.br" name="site"> <span
 							class="focus-input100"></span>
 					</div>
 
 
 
-					<div class="wrap-input100 validate-input" data-validate=" !!!">
-						<span class="label-input100"></span> <i
-							class=" small material-icons">person_outline</i> <input
-							class="input100" type="text" placeholder="@" name="redesSociais">
-						<span class="focus-input100"></span>
-					</div>
-
-
-
-					<div class="wrap-input100 validate-input"
-						>
+					<div class="wrap-input100 validate-input">
 						<span class="label-input100"></span> <input class="input100"
 							type="file" multiple="multiple" accept="Imagens/*" name="fotos">
 						<span class="focus-input100"></span>
+					</div>
+					
+					<!-- div so existe caso tenha fotos -->
+					<div th:if="${loja?.foto?.length > 0}">
+					
+					
+					<h6>Fotos Cadastradas</h6>
+					
+					<div>
+					
+					<ul>
+					
+					<!-- traz a quantidade de fotos cadastradas -->
+					<li th:each="foto, i : ${loja.verFotos()}">
+					
+					<!-- mostra a foto pela  -->
+					<a th:href="${foto}" target="blank"> <img width="30%" th:src="${foto}"></a>
+					
+					<a th:href="@{/excluirFotoLoja(id=${loja.id},numFoto = ${i.index})}">
+					
+						<i class=" small material-icons">delete_forever</i>
+					
+					</a>
+					
+					</li>
+					
+					</ul>
+					
+					</div>
+					
+					
 					</div>
 
 
